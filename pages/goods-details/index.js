@@ -48,7 +48,7 @@ Page({
       } 
     })
 
-/*    wx.request({
+    wx.request({
       url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/detail',
       data: {
         id: e.id
@@ -74,8 +74,8 @@ Page({
         });
         WxParse.wxParse('article', 'html', res.data.data.content, that, 5);
       }
-    })*/
-        for(var i=0;i<goodsDetailList.goodsDetailList.data.length;i++){
+    })
+/*        for(var i=0;i<goodsDetailList.goodsDetailList.data.length;i++){
         	var goodsDetailTmp = goodsDetailList.goodsDetailList.data[i];
         	if(e.id==goodsDetailTmp.basicInfo.id){
 		        that.data.goodsDetail = goodsDetailTmp;
@@ -87,7 +87,7 @@ Page({
 		        });
 		        WxParse.wxParse('article', 'html', goodsDetailTmp.content, that, 5);        		
         	}
-        }
+        }*/
 
   },
   bindGuiGeTap: function() {

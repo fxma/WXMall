@@ -65,7 +65,7 @@ Page({
     console.log('onLoad')
     var that = this
     wx.setNavigationBarTitle({
-      title: "外贸精品"//wx.getStorageSync('mallName')
+      title: wx.getStorageSync('mallName')
     })
     /*
     //调用应用实例的方法获取全局数据
@@ -76,7 +76,7 @@ Page({
       })
     })
     */
-/*       wx.request({
+       wx.request({
          url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/banner/list',
          data: {
            key: 'mallName'
@@ -86,12 +86,12 @@ Page({
              banners: res.data.data
            });
          }
-       })*/
-    that.setData({
+       })
+/*    that.setData({
       banners: bannerList.bannerList.data
-    });
+    });*/
     
-/*    wx.request({
+    wx.request({
       url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/category/all',
       success: function(res) {
         var categories = [{id:0, name:"全部"}];
@@ -104,8 +104,8 @@ Page({
         });
         that.getGoodsList(0);
       }
-    })*/
-        var categories = [{id:0, name:"全部"}];
+    })
+/*        var categories = [{id:0, name:"全部"}];
         for(var i=0;i<categoryAll.categoryAll.data.length;i++){
           categories.push(categoryAll.categoryAll.data[i]);
         }
@@ -113,7 +113,7 @@ Page({
           categories:categories,
           activeCategoryId:0
         });
-        that.getGoodsList(0);
+        that.getGoodsList(0);*/
   },
   getGoodsList: function (categoryId) {
     if (categoryId == 0) {
@@ -121,7 +121,7 @@ Page({
     }
     console.log(categoryId)
     var that = this;
-/*    wx.request({
+    wx.request({
       url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/list',
       data: {
         categoryId: categoryId
@@ -145,8 +145,8 @@ Page({
           goods:goods,
         });
       }
-    })*/
-       that.setData({
+    })
+  /*     that.setData({
           goods:[],
           loadingMoreHidden:true
         });
@@ -172,6 +172,6 @@ Page({
         }
         that.setData({
           goods:goods,
-        });  
+        });  */
   }
 })
