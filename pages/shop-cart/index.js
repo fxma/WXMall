@@ -235,12 +235,18 @@ Page({
    },
    deleteSelected:function(){
       var list = this.data.goodsList.list;
-      for(var i = 0 ; i < list.length ; i++){
-            var curItem = list[i];
+     /*
+      for(let i = 0 ; i < list.length ; i++){
+            let curItem = list[i];
             if(curItem.active){
               list.splice(i,1);
             }
       }
+      */
+     // above codes that remove elements in a for statement may change the length of list dynamically
+     list = list.filter(function(curGoods) {
+        return !curGoods.active;
+     });
      this.setGoodsList(this.getSaveHide(),this.totalPrice(),this.allSelect(),this.noSelect(),list);
     },
     toPayOrder:function(){
@@ -261,15 +267,15 @@ Page({
       var isFail = false;
       var doneNumber = 0;
       var needDoneNUmber = shopList.length;
-      for (var i =0; i < shopList.length; i++) {
+      for (let i =0; i < shopList.length; i++) {
         if (isFail) {
           wx.hideLoading();
           return;
         }
-        var carShopBean = shopList[i];
+        let carShopBean = shopList[i];
         // 获取价格和库存
         if (!carShopBean.propertyChildIds || carShopBean.propertyChildIds == "") {
-/*          wx.request({
+          wx.request({
             url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/detail',
             data: {
               id: carShopBean.goodsId
@@ -310,8 +316,8 @@ Page({
                 that.navigateToPayOrder();
               }
             }
-          })*/
-	        for(var j=0;j<goodsDetailList.goodsDetailList.data.length;j++){
+          })
+	  /*  for(var j=0;j<goodsDetailList.goodsDetailList.data.length;j++){
 	        	var goodsDetailTmp = goodsDetailList.goodsDetailList.data[j];
 	        	if(carShopBean.goodsId==goodsDetailTmp.basicInfo.id){
 	             doneNumber++;
@@ -349,7 +355,7 @@ Page({
 	                that.navigateToPayOrder();
 	              }	        		
 	        	}
-	        }
+          }*/
          
 
         } else {
